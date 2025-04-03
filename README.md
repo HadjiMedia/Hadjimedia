@@ -1,7 +1,7 @@
 # HadjiMediaToolBot
 
 <h3>Hadjitool is a tool made to modify Car Parking Multiplayer accounts with no root or vertual app.</h3>
-<h4>you just need an Access Key, wich you can get from <a href="https://t.me/@HadjiMediaToolBot">@HadjiMediaToolBot</a> for free with 1K Credits Balance.</h4>
+<h4>you just need an Access Key, wich you can get from <a href="https://t.me/@HadjiToolBot">@HadjiToolBot</a> for free with 1K Credits Balance.</h4>
 
 
 #### Tested on:
