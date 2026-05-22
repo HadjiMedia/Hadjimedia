@@ -1,0 +1,432 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base ───────────────────────────────────────────────── */
+:root {
+  --c-void:     #04040F;
+  --c-deep:     #08081A;
+  --c-cyan:     #00F5FF;
+  --c-magenta:  #FF0066;
+  --c-purple:   #9400FF;
+  --c-gold:     #FFD700;
+  --c-text:     #C8C8F0;
+  --c-muted:    #5050A0;
+  --glass-bg:   rgba(255,255,255,0.04);
+  --glass-border: rgba(0,245,255,0.15);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--c-void);
+  color: var(--c-text);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  overflow-x: hidden;
+  cursor: crosshair;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--c-deep); }
+::-webkit-scrollbar-thumb {
+  background: var(--c-cyan);
+  border-radius: 3px;
+  box-shadow: 0 0 8px var(--c-cyan);
+}
+
+/* ─── Typography ─────────────────────────────────────────── */
+.font-orbitron { font-family: 'Orbitron', monospace; }
+.font-rajdhani { font-family: 'Rajdhani', sans-serif; }
+.font-mono-tech { font-family: 'Share Tech Mono', monospace; }
+
+/* ─── Neon Text Effects ───────────────────────────────────── */
+.neon-text-cyan {
+  color: var(--c-cyan);
+  text-shadow:
+    0 0 7px var(--c-cyan),
+    0 0 21px var(--c-cyan),
+    0 0 42px var(--c-cyan),
+    0 0 82px rgba(0,245,255,0.5);
+}
+
+.neon-text-magenta {
+  color: var(--c-magenta);
+  text-shadow:
+    0 0 7px var(--c-magenta),
+    0 0 21px var(--c-magenta),
+    0 0 42px var(--c-magenta),
+    0 0 82px rgba(255,0,102,0.5);
+}
+
+.neon-text-purple {
+  color: var(--c-purple);
+  text-shadow:
+    0 0 7px var(--c-purple),
+    0 0 21px var(--c-purple),
+    0 0 42px var(--c-purple),
+    0 0 82px rgba(148,0,255,0.5);
+}
+
+.neon-text-gold {
+  color: var(--c-gold);
+  text-shadow:
+    0 0 7px var(--c-gold),
+    0 0 21px rgba(255,215,0,0.8),
+    0 0 42px rgba(255,215,0,0.4);
+}
+
+/* ─── Glassmorphism ──────────────────────────────────────── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-cyan {
+  background: rgba(0,245,255,0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0,245,255,0.2);
+}
+
+.glass-magenta {
+  background: rgba(255,0,102,0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,0,102,0.2);
+}
+
+.glass-purple {
+  background: rgba(148,0,255,0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(148,0,255,0.2);
+}
+
+/* ─── Glowing Borders ────────────────────────────────────── */
+.border-glow-cyan {
+  border: 1px solid rgba(0,245,255,0.4);
+  box-shadow: 0 0 15px rgba(0,245,255,0.2), inset 0 0 15px rgba(0,245,255,0.05);
+}
+
+.border-glow-magenta {
+  border: 1px solid rgba(255,0,102,0.4);
+  box-shadow: 0 0 15px rgba(255,0,102,0.2), inset 0 0 15px rgba(255,0,102,0.05);
+}
+
+.border-glow-purple {
+  border: 1px solid rgba(148,0,255,0.4);
+  box-shadow: 0 0 15px rgba(148,0,255,0.2), inset 0 0 15px rgba(148,0,255,0.05);
+}
+
+/* ─── HUD Corner Brackets ────────────────────────────────── */
+.hud-frame {
+  position: relative;
+}
+.hud-frame::before,
+.hud-frame::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+.hud-frame::before {
+  top: -1px; left: -1px;
+  border-top: 2px solid var(--c-cyan);
+  border-left: 2px solid var(--c-cyan);
+  box-shadow: -3px -3px 8px rgba(0,245,255,0.4);
+}
+.hud-frame::after {
+  bottom: -1px; right: -1px;
+  border-bottom: 2px solid var(--c-cyan);
+  border-right: 2px solid var(--c-cyan);
+  box-shadow: 3px 3px 8px rgba(0,245,255,0.4);
+}
+
+/* ─── Glitch Effect ─────────────────────────────────────── */
+.glitch-wrapper {
+  position: relative;
+}
+.glitch-wrapper::before,
+.glitch-wrapper::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+.glitch-wrapper::before {
+  color: var(--c-cyan);
+  animation: glitchBefore 4s infinite linear;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  transform: translate(-2px, 0);
+}
+.glitch-wrapper::after {
+  color: var(--c-magenta);
+  animation: glitchAfter 4s infinite linear;
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+  transform: translate(2px, 0);
+}
+
+@keyframes glitchBefore {
+  0%, 92%, 100% { opacity: 0; transform: translate(-2px, 0); }
+  93%  { opacity: 0.8; transform: translate(-6px, 2px); }
+  94%  { opacity: 0; transform: translate(3px, -1px); }
+  95%  { opacity: 0.6; transform: translate(-2px, 0); }
+}
+@keyframes glitchAfter {
+  0%, 92%, 100% { opacity: 0; transform: translate(2px, 0); }
+  93%  { opacity: 0.8; transform: translate(6px, -2px); }
+  94%  { opacity: 0; transform: translate(-3px, 1px); }
+  95%  { opacity: 0.6; transform: translate(2px, 0); }
+}
+
+/* ─── Scan Line Overlay ──────────────────────────────────── */
+.scanlines::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0,0,0,0.05) 3px,
+    rgba(0,0,0,0.05) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+  animation: scanMove 8s linear infinite;
+}
+@keyframes scanMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100px; }
+}
+
+/* ─── Grid Background ────────────────────────────────────── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(0,245,255,0.04) 1px, transparent 1px),
+    linear-gradient(to right, rgba(0,245,255,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ─── Digital Readout (Countdown) ────────────────────────── */
+.digital-digit {
+  font-family: 'Orbitron', monospace;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  position: relative;
+}
+
+.digital-digit::before {
+  content: attr(data-value);
+  position: absolute;
+  top: 0; left: 0;
+  color: rgba(0,245,255,0.08);
+  filter: blur(0px);
+  user-select: none;
+}
+
+/* ─── Timeline ───────────────────────────────────────────── */
+.timeline-line {
+  background: linear-gradient(to bottom, transparent, var(--c-cyan), var(--c-magenta), transparent);
+}
+
+/* ─── Gallery Masonry ────────────────────────────────────── */
+.masonry-grid {
+  columns: 3;
+  column-gap: 12px;
+}
+.masonry-grid > * {
+  break-inside: avoid;
+  margin-bottom: 12px;
+}
+@media (max-width: 768px) {
+  .masonry-grid { columns: 2; }
+}
+@media (max-width: 480px) {
+  .masonry-grid { columns: 1; }
+}
+
+/* ─── Button Styles ──────────────────────────────────────── */
+.btn-cyber {
+  position: relative;
+  overflow: hidden;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 12px 28px;
+  background: transparent;
+  border: 1px solid var(--c-cyan);
+  color: var(--c-cyan);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-cyber::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0,245,255,0.15), transparent);
+  transition: left 0.4s ease;
+}
+.btn-cyber:hover::before { left: 100%; }
+.btn-cyber:hover {
+  background: rgba(0,245,255,0.1);
+  box-shadow: 0 0 20px rgba(0,245,255,0.4), inset 0 0 20px rgba(0,245,255,0.1);
+  text-shadow: 0 0 10px var(--c-cyan);
+}
+
+.btn-cyber-magenta {
+  border-color: var(--c-magenta);
+  color: var(--c-magenta);
+}
+.btn-cyber-magenta::before {
+  background: linear-gradient(90deg, transparent, rgba(255,0,102,0.15), transparent);
+}
+.btn-cyber-magenta:hover {
+  background: rgba(255,0,102,0.1);
+  box-shadow: 0 0 20px rgba(255,0,102,0.4), inset 0 0 20px rgba(255,0,102,0.1);
+  text-shadow: 0 0 10px var(--c-magenta);
+}
+
+.btn-cyber-solid {
+  background: linear-gradient(135deg, var(--c-cyan), var(--c-purple));
+  border: none;
+  color: var(--c-void);
+  font-weight: 700;
+}
+.btn-cyber-solid:hover {
+  background: linear-gradient(135deg, var(--c-cyan), var(--c-magenta));
+  box-shadow: 0 0 30px rgba(0,245,255,0.5);
+  transform: translateY(-1px);
+}
+
+/* ─── Form Inputs ────────────────────────────────────────── */
+.cyber-input {
+  background: rgba(0,245,255,0.03);
+  border: 1px solid rgba(0,245,255,0.2);
+  color: var(--c-text);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  padding: 12px 16px;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+.cyber-input::placeholder { color: rgba(192,192,240,0.3); }
+.cyber-input:focus {
+  border-color: var(--c-cyan);
+  box-shadow: 0 0 15px rgba(0,245,255,0.2), inset 0 0 10px rgba(0,245,255,0.05);
+  background: rgba(0,245,255,0.05);
+}
+
+.cyber-select {
+  background: rgba(0,245,255,0.03);
+  border: 1px solid rgba(0,245,255,0.2);
+  color: var(--c-text);
+  font-family: 'Rajdhani', sans-serif;
+  appearance: none;
+  cursor: pointer;
+}
+.cyber-select:focus {
+  border-color: var(--c-cyan);
+  box-shadow: 0 0 15px rgba(0,245,255,0.2);
+  outline: none;
+}
+.cyber-select option { background: var(--c-deep); color: var(--c-text); }
+
+/* ─── Loading Skeleton ───────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg,
+    rgba(0,245,255,0.05) 0%,
+    rgba(0,245,255,0.1) 50%,
+    rgba(0,245,255,0.05) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ─── Section Markers ────────────────────────────────────── */
+.section-tag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+}
+
+/* ─── Lightbox ───────────────────────────────────────────── */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4,4,15,0.95);
+  backdrop-filter: blur(10px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── Music Player ───────────────────────────────────────── */
+.music-player-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+}
+
+/* ─── Love Meter ─────────────────────────────────────────── */
+.meter-bar {
+  height: 8px;
+  background: linear-gradient(90deg, var(--c-purple), var(--c-cyan), var(--c-magenta));
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+.meter-bar::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: meterShine 2s ease-in-out infinite;
+  width: 60%;
+}
+@keyframes meterShine {
+  0% { left: -60%; }
+  100% { left: 100%; }
+}
+
+/* ─── Scroll Indicator ───────────────────────────────────── */
+.scroll-indicator {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.8; }
+  50% { transform: translateY(10px); opacity: 0.3; }
+}
+
+/* ─── Responsive Utilities ───────────────────────────────── */
+@media (max-width: 640px) {
+  .masonry-grid { columns: 1; }
+  .font-orbitron { letter-spacing: 0.05em !important; }
+}
